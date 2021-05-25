@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config />
+    <!-- This Configuration is using config file using xml -->
+    <bean class="com.springframework.lifecycle.Pepsi" name="pepsi" init-method="init" destroy-method="destroy">
+        <property name="pepsiMl" value="750ml" />
+        <property name="pepsiPrice" value="35.33" />
+        <property name="pepsiMadeLocation" value="Ahmedabad" />
+    </bean>
+
+    <!-- this configuration is for interface implementation -->
+    <bean class="com.springframework.lifecycle.Apple" name="apple">
+        <property name="appleColor" value="Red"/>
+        <property name="applePrice" value="15" />
+        <property name="appleSize" value="Medium"/>
+    </bean>
+
+    <!-- this configuration is used for annotation implementation -->
+    <bean class="com.springframework.lifecycle.Wafers" name="wafers">
+        <property name="waferFlavor" value="Tomato" />
+        <property name="waferPrice" value="25" />
+    </bean>
+</beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config />
+
+    <bean class="com.springframework.constructorinjection.Course" name="Course">
+        <property name="cName" value="Spring Boot" />
+    </bean>
+
+    <bean class="com.springframework.constructorinjection.Student" name="Student">
+        <constructor-arg value="Bhavik Prajapati" />
+        <constructor-arg value="Bharuch" />
+        <constructor-arg value="Male" />
+        <constructor-arg value="23" />
+        <constructor-arg ref="Course" />
+    </bean>
+
+    <bean class="com.springframework.constructorinjection.Addition" name="addition">
+        <constructor-arg value="10" type="int" />
+        <constructor-arg value="20" type="int" />
+    </bean>
+</beans>

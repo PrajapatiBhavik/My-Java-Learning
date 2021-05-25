@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config />
+    <bean class="com.springcore.collections.Person" name="CollectionFramework">
+        <property name="fName" value="Bhavik Prajapati"/>
+        <property name="nLaptops">
+            <list>
+                <value>Dell</value>
+                <value>Hp</value>
+                <value>Lenevo</value>
+                <value>Asus</value>
+                <value>Mi</value>
+            </list>
+        </property>
+        <property name="nAddress">
+            <set>
+                <value>Bharuch</value>
+                <value>Ahmedabad</value>
+                <value>Surat</value>
+                <value>Nadiad</value>
+            </set>
+        </property>
+
+        <property name="nickName">
+            <map>
+                <entry key="Bhavik" value="bhavu"/>
+                <entry key="Jaydeep" value="Jayu" />
+                <entry key="Vivek" value="Vicky" />
+                <entry key="Jigar" value="Jigu" />
+            </map>
+        </property>
+
+        <property name="gamePerson">
+            <props>
+                <prop key="Cricket">Rohit Sharma</prop>
+                <prop key="WWE">John Cena</prop>
+                <prop key="Football">Ronaldo</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean class="com.springframwork.autowiring.Address" name="address">
+        <property name="street" value="Vanta Mali Faliya" />
+        <property name="city" value="Bharuch" />
+    </bean>
+
+
+    <!--<bean class="com.springframwork.autowiring.Address" name="address">
+        <constructor-arg value="Vanta Mali Faliya" />
+        <constructor-arg value="Bharuch" />
+    </bean>-->
+
+    <!-- AutoWiring Using Xml-byName -->
+    <bean class="com.springframwork.autowiring.Person" name="person" autowire="byName">
+        <property name="personName" value="bhavik" />
+    </bean>
+
+    <!-- AutoWiring Using Xml-byType -->
+    <!--<bean class="com.springframwork.autowiring.Person" name="person" autowire="byType">
+        <property name="personName" value="bhavik" />
+    </bean>-->
+
+    <!-- AutoWiring Using Xml-Constructor -->
+    <!--<bean class="com.springframwork.autowiring.Person" name="person" autowire="constructor">
+        <property name="personName" value="bhavik" />
+    </bean>-->
+</beans>

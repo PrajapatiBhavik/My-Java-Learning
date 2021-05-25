@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+        ">
+    <context:annotation-config/>
+
+    <util:list list-class="java.util.Vector" id="list">
+        <value>Bhavik</value>
+        <value>Jaydeep</value>
+        <value>Jigar</value>
+        <value>Vivek</value>
+    </util:list>
+
+    <util:map map-class="java.util.TreeMap" id="map">
+        <entry key="Bhavik" value="Bhavu" />
+        <entry key="Jaydeep" value="Jayu" />
+        <entry key="Jigar" value="Jigu" />
+        <entry key="Vivek" value="vicky" />
+    </util:map>
+
+    <util:properties id="properties">
+        <prop key="Bhavik">Java Developer</prop>
+        <prop key="Jaydeep">Android Developer</prop>
+        <prop key="Jigar">Python Developer</prop>
+        <prop key="Vivek">Php Developer</prop>
+    </util:properties>
+
+    <bean class="com.springframework.standalone.collections.Person" name="person">
+        <property name="friends" ref="list"/>
+        <property name="nickName" ref="map" />
+        <property name="skills" ref="properties" />
+    </bean>
+</beans>

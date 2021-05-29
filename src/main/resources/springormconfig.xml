@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- To Enable Mostly Useful Annotations -->
+    <context:annotation-config/>
+
+    <!-- To Enable Transaction Related Annotations When Something Writes to The Database -->
+    <tx:annotation-driven />
+
+    <!-- Data Source Object Which Has Lots Of Properties -->
+    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" name="driverManagerDataSource">
+        <property name="username" value="root"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/springorm" />
+    </bean>
+
+    <!-- SessionFactory Object And It Has Three Properties -->
+    <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" name="sessionFactory">
+        <!-- 1) Data Source Object -->
+        <property name="dataSource" ref="driverManagerDataSource" />
+        <!-- 2) Hibernate Properties -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <!-- 3) AnnotatedClasses Means Pojos Or Bean Class -->
+        <property name="annotatedClasses">
+            <list>
+                <value>Java.SpringOrmEntities.Employee</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- HibernateTemplate Class Object and It Has SessionFactory Object -->
+    <bean class="org.springframework.orm.hibernate5.HibernateTemplate" name="hibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+
+    <!-- Declaring EmployeeDao Class Object It Has Property Called HibernateTemplate -->
+    <bean class="Java.SpringOrmDao.EmployeeDao" name="employeeDao">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
+    </bean>
+
+    <!-- Need To Declare Transaction Manager Class To Permit The Read Write (Commit) To The Database -->
+    <bean class="org.springframework.orm.hibernate5.HibernateTransactionManager" name="transactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+</beans>

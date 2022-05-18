@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Person
 {
-    private String fName;
+    private String firstName;
     private List<String> nLaptops;
     private Set<String> nAddress;
     private Map<String,String> nickName;
